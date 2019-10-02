@@ -3114,6 +3114,8 @@ namespace rsx
 				break;
 			}
 		}
+		else
+			value = g_cfg.video.zcull_default_value;
 
 		CellGcmReportData report_data{ timestamp(), value, 0};
 
