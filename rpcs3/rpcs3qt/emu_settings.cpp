@@ -1274,7 +1274,158 @@ QString emu_settings::GetLocalizedSetting(const QString& original, emu_settings_
 		case stereo_render_mode_options::side_by_side: return tr("Side-by-side", "3D Display Mode");
 		case stereo_render_mode_options::over_under: return tr("Over-under", "3D Display Mode");
 		}
+	case emu_settings_type::SPU_FCGT_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FCGT accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FCGT accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FCGT accuracy");
+		}
 		break;
+	case emu_settings_type::SPU_FCMGT_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FCMGT accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FCMGT accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FCMGT accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FM_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FM accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FM accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FM accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FNMS_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FM accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FM accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FM accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FMA_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FMA accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FMA accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FMA accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FMS_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FMS accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FMS accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FMS accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FREST_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FREST accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FREST accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FREST accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FRSQEST_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FRSQEST accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FRSQEST accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FRSQEST accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FI_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FI accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FI accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FI accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FA_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FA accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FA accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FA accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FS_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FS accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FS accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FS accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FESD_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FESD accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FESD accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FESD accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FRDS_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FRDS accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FRDS accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FRDS accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FCEQ_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FCEQ accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FCEQ accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FCEQ accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_FCMEQ_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "FCMEQ accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "FCMEQ accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "FCMEQ accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_CFLTS_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "CFLTS accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "CFLTS accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "CFLTS accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_CFLTU_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "CFLTU accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "CFLTU accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "CFLTU accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_CSFLT_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "CSFLT accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "CSFLT accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "CSFLT accuracy");
+		}
+		break;
+	case emu_settings_type::SPU_CUFLT_Accuracy:
+		switch (static_cast<spu_instruction_accuracy>(index))
+		{
+		case spu_instruction_accuracy::Default: return tr("Default", "CUFLT accuracy");
+		case spu_instruction_accuracy::approximate: return tr("Approximate", "CUFLT accuracy");
+		case spu_instruction_accuracy::accurate: return tr("Accurate", "CUFLT accuracy");
+		break;
+		}
 	case emu_settings_type::MidiDevices:
 		switch (static_cast<midi_device_type>(index))
 		{
