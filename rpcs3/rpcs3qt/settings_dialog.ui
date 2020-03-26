@@ -4100,6 +4100,14 @@
                </property>
               </widget>
              </item>
+            <item>
+             <widget class="QCheckBox" name="reprotect_hack">
+              <property name="text">
+               <string>Reprotect hack</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <item>
               <widget class="QCheckBox" name="gpuTextureScaling">
                <property name="text">
