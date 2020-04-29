@@ -117,6 +117,7 @@ public:
 		const QString disable_vulkan_mem_allocator = tr("Disables the custom Vulkan memory allocator and reverts to direct calls to VkAllocateMemory/VkFreeMemory.");
 		const QString disable_fifo_reordering      = tr("Disables RSX FIFO optimizations completely. Draws are processed as they are received by the DMA puller.");
 		const QString reprotect_hack               = tr("Never use this.\nDisable Force CPU Blit when using this option.\nWorkaround for flickering shadows and missing water in TLoU, Uncharted 3.");
+		const QString vk_event_hack                = tr("Improves performance where Write Color Buffer or Write Depth Buffer is used\nIf unsure never use this.");
 		const QString gpu_texture_scaling          = tr("Force all texture transfer, scaling and conversion operations on the GPU.\nMay cause texture corruption in some cases.");
 		const QString strict_texture_flushing      = tr("Forces texture flushing even in situations where it is not necessary/correct. Known to cause visual artifacts, but useful for debugging certain texture cache issues.");
 		const QString stereo_render_mode           = tr("Sets the 3D stereo rendering mode (only available in custom configurations with a default resolution of 720p).\nAnaglyph uses different colors for each eye, which can then be filtered with certain glasses.\nSide-by-Side is more commonly supported by VR viewer apps.\nOver-Under is closer to the native stereo output, but less commonly supported.");
