@@ -1,6 +1,12 @@
 RPCS3
 =====
 
+CI links:
+
+[Cirrus CI](https://cirrus-ci.com/github/illusion0001/rpcs3)
+
+<!--
+
 [![Cirrus CI - Base Branch Build Status](https://img.shields.io/cirrus/github/RPCS3/rpcs3?label=Cirrus%20CI&logo=cirrus-ci)](https://cirrus-ci.com/github/RPCS3/rpcs3)
 [![RPCS3 Discord Server](https://img.shields.io/discord/272035812277878785?color=5865F2&label=RPCS3%20Discord&logo=discord&logoColor=white)](https://discord.me/rpcs3)
 
@@ -37,3 +43,5 @@ Don't forget to have your graphics driver up to date and to install the [Visual 
 ## License
 
 Most files are licensed under the terms of GNU GPL-2.0-only License; see LICENSE file for details. Some files may be licensed differently; check appropriate file headers for details.
+
+-->
