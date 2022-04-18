@@ -294,7 +294,7 @@ void gs_frame::keyPressEvent(QKeyEvent *keyEvent)
 	{
 		if (keyEvent->modifiers() == Qt::ControlModifier && !m_disable_kb_hotkeys)
 		{
-			Emu.Kill(false, true);
+			Emu.GracefulShutdown(false, true);
 			return;
 		}
 		break;
@@ -303,14 +303,8 @@ void gs_frame::keyPressEvent(QKeyEvent *keyEvent)
 	{
 		if (keyEvent->modifiers() == Qt::ControlModifier && !m_disable_kb_hotkeys)
 		{
-			if (Emu.IsStopped())
-			{
-				Emu.Restart();
-				return;
-			}
-
-			extern bool boot_last_savestate();
-			boot_last_savestate();
+			Emu.Restart();
+			return;
 		}
 		break;
 	}

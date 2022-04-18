@@ -3011,6 +3011,21 @@ void main_window::keyPressEvent(QKeyEvent *keyEvent)
 	{
 		m_game_list_frame->Refresh(true);
 	}
+	switch (keyEvent->key())
+	{
+		case Qt::Key_E:
+		{
+			switch (Emu.GetStatus())
+			{
+				case system_state::paused: Emu.Resume(); return;
+				case system_state::ready: Emu.Run(true); return;
+				default: return;
+			}
+		}
+		case Qt::Key_S: if (!Emu.IsStopped()) Emu.GracefulShutdown(false, true); return;
+		case Qt::Key_R: if (!Emu.GetBoot().empty()) Emu.Restart(); return;
+		case Qt::Key_P: if (Emu.IsRunning()) Emu.Pause(); return;
+	}
 }
 
 void main_window::mouseDoubleClickEvent(QMouseEvent *event)
