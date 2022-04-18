@@ -349,14 +349,17 @@ void gs_frame::handle_shortcut(gui::shortcuts::shortcut shortcut_key, const QKey
 	{
 		if (!m_disable_kb_hotkeys)
 		{
-			if (Emu.IsStopped())
-			{
-				Emu.Restart();
-				return;
-			}
-
-			extern bool boot_last_savestate();
-			boot_last_savestate();
+			Emu.Restart();
+			return;
+		}
+		break;
+	}
+	case Qt::Key_R:
+	{
+		if (keyEvent->modifiers() == Qt::ControlModifier && !m_disable_kb_hotkeys)
+		{
+			Emu.Restart();
+			return;
 		}
 		break;
 	}
