@@ -131,6 +131,7 @@ bool main_window::Init([[maybe_unused]] bool with_cli_boot)
 	Q_EMIT RequestGlobalStylesheetChange();
 	ConfigureGuiFromSettings();
 
+	/*
 	if (!rpcs3::is_release_build() && !rpcs3::is_local_build())
 	{
 		const std::string_view branch_name = rpcs3::get_full_branch();
@@ -160,6 +161,7 @@ bool main_window::Init([[maybe_unused]] bool with_cli_boot)
 			return false;
 		}
 	}
+	*/
 
 	m_shortcut_handler = new shortcut_handler(gui::shortcuts::shortcut_handler_id::main_window, this, m_gui_settings);
 	connect(m_shortcut_handler, &shortcut_handler::shortcut_activated, this, &main_window::handle_shortcut);
