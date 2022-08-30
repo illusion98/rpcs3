@@ -807,10 +807,12 @@ static auto ppu_load_exports(const ppu_module& _module, ppu_linkage_info* link, 
 				flink.export_addr = 0;
 			}
 
+			/*
 			if (flink.export_addr)
 			{
 				ppu_loader.notice("Already linked function '%s' in module '%s'", ppu_get_function_name(module_name, fnid), module_name);
 			}
+			*/
 			//else
 			{
 				// Static function
