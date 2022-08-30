@@ -79,6 +79,7 @@ bool gui_application::Init()
 	setWindowIcon(QIcon(":/rpcs3.ico"));
 #endif
 
+	/*
 	if (!rpcs3::is_release_build() && !rpcs3::is_local_build())
 	{
 		const std::string_view branch_name = rpcs3::get_full_branch();
@@ -109,6 +110,7 @@ bool gui_application::Init()
 			return false;
 		}
 	}
+	*/
 
 	m_emu_settings.reset(new emu_settings());
 	m_gui_settings.reset(new gui_settings());
