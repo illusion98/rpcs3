@@ -966,13 +966,7 @@ bool patch_manager_dialog::handle_json(const QByteArray& data)
 
 	// TODO: check for updates first instead of loading the whole file immediately
 	if (!m_download_auto_accept)
-	{
-		const QMessageBox::StandardButton answer = QMessageBox::question(this, tr("Update patches?"), tr("New patches are available.\n\nDo you want to update?"));
-		if (answer != QMessageBox::StandardButton::Yes)
-		{
-			return true;
-		}
-	}
+		return true;
 
 	const QJsonValue& version_obj = json_data["version"];
 
