@@ -1142,6 +1142,11 @@ void patch_manager_dialog::download_update(bool automatic, bool auto_accept)
 
 bool patch_manager_dialog::handle_json(const QByteArray& data)
 {
+	if (!m_download_auto_accept)
+	{
+		return true;
+	}
+
 	const QJsonObject json_data = QJsonDocument::fromJson(data).object();
 	const int return_code       = json_data["return_code"].toInt(-255);
 
@@ -1181,16 +1186,6 @@ bool patch_manager_dialog::handle_json(const QByteArray& data)
 	{
 		patch_log.error("Patch download error: unknown return code: %d", return_code);
 		return false;
-	}
-
-	// TODO: check for updates first instead of loading the whole file immediately
-	if (!m_download_auto_accept)
-	{
-		const QMessageBox::StandardButton answer = QMessageBox::question(this, tr("Update patches?"), tr("New patches are available.\n\nDo you want to update?"));
-		if (answer != QMessageBox::StandardButton::Yes)
-		{
-			return true;
-		}
 	}
 
 	const QJsonValue& version_obj = json_data["version"];
