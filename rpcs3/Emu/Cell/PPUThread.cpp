@@ -1060,7 +1060,7 @@ void ppu_thread::dump_regs(std::string& ret) const
 			is_const = false;
 		}
 
-		fmt::append(ret, "r%d%s%s 0x%016llx", i, i <= 9 ? " " : "", is_const ? "©" : ":", reg);
+		fmt::append(ret, "r%d%s%s 0x%08llx", i, i <= 9 ? " " : "", is_const ? "©" : ":", reg);
 
 		constexpr u32 max_str_len = 32;
 		constexpr u32 hex_count = 8;
