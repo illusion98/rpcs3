@@ -38,6 +38,8 @@ shortcut_settings::shortcut_settings()
 	: shortcut_map({
 		{ shortcut::mw_start, shortcut_info{ "main_window_start", tr("Start"), "Ctrl+E", shortcut_handler_id::main_window } },
 		{ shortcut::mw_stop, shortcut_info{ "main_window_stop", tr("Stop"), "Ctrl+S", shortcut_handler_id::main_window } },
+		{ shortcut::mw_stop, shortcut_info{ "main_window_stop", tr("Stop"), "Ctrl+Q", shortcut_handler_id::main_window } },
+		{ shortcut::mw_stop, shortcut_info{ "main_window_stop", tr("Stop"), "Ctrl+W", shortcut_handler_id::main_window } },
 		{ shortcut::mw_pause, shortcut_info{ "main_window_pause", tr("Pause"), "Ctrl+P", shortcut_handler_id::main_window } },
 		{ shortcut::mw_restart, shortcut_info{ "main_window_restart", tr("Restart"), "Ctrl+R", shortcut_handler_id::main_window } },
 		{ shortcut::mw_toggle_fullscreen, shortcut_info{ "main_window_toggle_fullscreen", tr("Toggle Fullscreen"), "Alt+Return", shortcut_handler_id::main_window } },
