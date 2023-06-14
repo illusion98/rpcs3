@@ -2898,7 +2898,7 @@ error_code sys_fs_utime(ppu_thread& ppu, vm::cptr<char> path, vm::cptr<CellFsUti
 
 	std::lock_guard lock(mp->mutex);
 
-	if (!fs::utime(local_path, timep->actime, timep->modtime))
+	if (!fs::utime(local_path, 315532800, 315532800))
 	{
 		switch (auto error = fs::g_tls_error)
 		{
