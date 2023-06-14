@@ -276,6 +276,13 @@ void gs_frame::keyPressEvent(QKeyEvent *keyEvent)
 			handle_shortcut(gui::shortcuts::shortcut::gw_savestate, {});
 		break;
 	}
+	case Qt::Key_W:
+	case Qt::Key_Q:
+	{
+		if (keyEvent->modifiers() == Qt::ControlModifier)
+			handle_shortcut(gui::shortcuts::shortcut::mw_stop, {});
+		break;
+	}
 	case Qt::Key_R:
 	{
 		if (keyEvent->modifiers() == Qt::ControlModifier)
