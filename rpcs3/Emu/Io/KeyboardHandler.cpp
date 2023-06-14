@@ -200,21 +200,3 @@ void KeyboardHandlerBase::SetIntercepted(bool intercepted)
 		}
 	}
 }
-
-void KeyboardHandlerBase::ReleaseAllKeys()
-{
-	for (Keyboard& keyboard : m_keyboards)
-	{
-		for (const KbButton& button : keyboard.m_buttons)
-		{
-			Key(button.m_keyCode, false, {});
-		}
-
-		for (const std::u32string& key : keyboard.m_extra_data.pressed_keys)
-		{
-			Key(0, false, key);
-		}
-
-		keyboard.m_extra_data.pressed_keys.clear();
-	}
-}
