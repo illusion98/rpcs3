@@ -11,6 +11,7 @@ pr:
       - master
 jobs:
 - job: Linux_Build
+  timeoutInMinutes: 180
   strategy:
     matrix:
       Clang:
@@ -66,6 +67,7 @@ jobs:
       RPCS3_TOKEN: $(RPCS3-Token)
 
 - job: Windows_Build
+  timeoutInMinutes: 180
   variables:
     COMPILER: msvc
     QT_VER_MAIN: '6'
