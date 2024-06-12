@@ -2,6 +2,8 @@ name: Build RPCS3
 
 on:
   push:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   Linux_Build:
