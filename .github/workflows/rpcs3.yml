@@ -1,14 +1,10 @@
 name: Build RPCS3
 
-on:
-  push:
-  pull_request:
-  workflow_dispatch:
+on: [ push, pull_request, workflow_dispatch ]
 
 jobs:
   Linux_Build:
     runs-on: ubuntu-latest
-    #timeout-minutes: 180
     strategy:
       matrix:
         compiler: [clang, gcc]
@@ -54,7 +50,6 @@ jobs:
 
   Windows_Build:
     runs-on: windows-latest
-    #timeout-minutes: 180
     env:
       COMPILER: msvc
       QT_VER_MAIN: '6'
@@ -127,7 +122,9 @@ jobs:
           path: ${{ github.workspace }}/build
 
   push_release:
-    if: github.event_name == 'push'
+    if: |
+      github.ref_name == 'master' &&
+      github.event_name == 'push'
     needs: [ Linux_Build, Windows_Build ]
     runs-on: ubuntu-latest
     permissions:
@@ -145,6 +142,4 @@ jobs:
       - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          ls artifact
-          gh release create ${{ GITHUB.RUN_NUMBER }} artifact/*.* --target ${{ GITHUB.SHA }} -t ${{ GITHUB.RUN_NUMBER }}
+        run: gh release create ${{ GITHUB.RUN_NUMBER }} artifact/*.* --target ${{ GITHUB.SHA }} -t ${{ GITHUB.RUN_NUMBER }}
