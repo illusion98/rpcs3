@@ -1,9 +1,9 @@
 RPCS3
 =====
 
-CI links:
+[Download Latest Release](https://github.com/illusion0001/rpcs3/releases/latest)
 
-[Azure Pipelines](https://dev.azure.com/illusion9804/rpcs3/_build)
+[![Build RPCS3](https://github.com/illusion0001/rpcs3/actions/workflows/rpcs3.yml/badge.svg?branch=master)](https://github.com/illusion0001/rpcs3/actions/workflows/rpcs3.yml)
 
 <!--
 
