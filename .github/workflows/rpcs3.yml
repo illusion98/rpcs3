@@ -135,7 +135,7 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: RPCS3 for Windows
-          path: ${{ github.workspace }}/build
+          path: build/*.7z
           retention-days: 1
           compression-level: 0
 
@@ -145,19 +145,23 @@ jobs:
       github.event_name == 'push'
     needs: [ Linux_Build, Windows_Build ]
     runs-on: ubuntu-latest
+    env:
+      download_folder: artifact
     permissions:
       contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@main
-        with:
-          fetch-depth: 0
 
       - name: Download artifacts
         uses: actions/download-artifact@main
         with:
           merge-multiple: true
-          path: artifact
+          path: ${{ env.download_folder }}
+
+      - name: Generate checksum
+        working-directory: ${{ env.download_folder }}
+        run: sha256sum -b * > hash.sha256
 
       - name: Create Release
         env:
@@ -169,7 +173,11 @@ jobs:
           COMM_COUNT=$(git rev-list --count HEAD)
           COMM_HASH=$(git rev-parse --short=8 HEAD)
           AVVER="${COMM_TAG}-${COMM_COUNT}-${COMM_HASH}"
-          gh release create "$AVVER" artifact/*.* --target ${{ GITHUB.SHA }} -t "$AVVER"
+          readme="hash.md"
+          echo \`\`\`shs256 > $readme
+          echo $(cat ${{ env.download_folder }}/hash.sha256) >> $readme
+          echo \`\`\` >> $readme
+          gh release create "$AVVER" artifact/*.* --target ${{ GITHUB.SHA }} -t "$AVVER" -F $readme
 
       # Make sure the release was created successfully first
       # before attempting to delete the files
