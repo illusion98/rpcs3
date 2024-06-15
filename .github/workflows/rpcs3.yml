@@ -152,6 +152,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
+        with:
+          fetch-depth: 0
 
       - name: Download artifacts
         uses: actions/download-artifact@main
@@ -161,7 +163,7 @@ jobs:
 
       - name: Generate checksum
         working-directory: ${{ env.download_folder }}
-        run: sha256sum -b * > hash.sha256
+        run: find . -type f -exec sha256sum {} \; > hash.sha256
 
       - name: Create Release
         env:
