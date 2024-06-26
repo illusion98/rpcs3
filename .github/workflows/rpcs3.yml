@@ -188,11 +188,13 @@ jobs:
           COMM_COUNT=$(git rev-list --count HEAD)
           COMM_HASH=$(git rev-parse --short=8 HEAD)
           AVVER="${COMM_TAG}-${COMM_COUNT}-${COMM_HASH}"
-          readme="hash.md"
-          
-          files_to_upload_str=$(cat ${{ env.download_folder }}/files_to_upload.txt)
-          gh release create "$AVVER" $files_to_upload_str --target ${{ GITHUB.SHA }} -t "$AVVER" -F $readme
 
+          cd ${{ env.download_folder }}
+          readme="hash.md"
+          files_to_upload_str=$(cat files_to_upload.txt)
+          cat $readme
+          cat $files_to_upload_str
+          gh release create "$AVVER" $files_to_upload_str --target ${{ GITHUB.SHA }} -t "$AVVER" -F $readme
 
       # Make sure the release was created successfully first
       # before attempting to delete the files
