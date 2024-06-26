@@ -163,7 +163,20 @@ jobs:
 
       - name: Generate checksum
         working-directory: ${{ env.download_folder }}
-        run: find . -type f -exec sha256sum {} \; > hash.sha256
+        run: |
+          echo \`\`\`sha256 > hash.md
+          echo "" >> hash.md
+
+          files_to_upload=()
+          while IFS= read -r -d '' file; do
+            sha256sum "$file" >> hash.md
+            files_to_upload+=("$file")
+          done < <(find . -type f -print0)
+          echo "" >> hash.md
+          echo \`\`\` >> hash.md
+
+          files_to_upload_str="${files_to_upload[@]}"
+          echo $files_to_upload_str > files_to_upload.txt
 
       - name: Create Release
         env:
@@ -176,10 +189,10 @@ jobs:
           COMM_HASH=$(git rev-parse --short=8 HEAD)
           AVVER="${COMM_TAG}-${COMM_COUNT}-${COMM_HASH}"
           readme="hash.md"
-          echo \`\`\`shs256 > $readme
-          echo $(cat ${{ env.download_folder }}/hash.sha256) >> $readme
-          echo \`\`\` >> $readme
-          gh release create "$AVVER" artifact/*.* --target ${{ GITHUB.SHA }} -t "$AVVER" -F $readme
+          
+          files_to_upload_str=$(cat ${{ env.download_folder }}/files_to_upload.txt)
+          gh release create "$AVVER" $files_to_upload_str --target ${{ GITHUB.SHA }} -t "$AVVER" -F $readme
+
 
       # Make sure the release was created successfully first
       # before attempting to delete the files
