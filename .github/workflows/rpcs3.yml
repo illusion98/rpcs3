@@ -165,25 +165,26 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo \`\`\`sha256 > hash.md
-          echo "" >> hash.md
+          readme="hash.md"
+          echo \`\`\`sha256 > $readme
+          echo "" >> $readme
           files_to_upload=()
           for file in "${{ github.workspace }}/${{ env.download_folder }}/"*.7z; do
             if [ -f "$file" ]; then
-              echo $(sha256sum "$file") >> hash.md
+              echo $(sha256sum "$file") >> $readme
               files_to_upload+=("$file")
             fi
           done
           for file in "${{ github.workspace }}/${{ env.download_folder }}/"*.AppImage; do
             if [ -f "$file" ]; then
-              echo $(sha256sum "$file") >> hash.md
+              echo $(sha256sum "$file") >> $readme
               files_to_upload+=("$file")
             fi
           done
-          echo "" >> hash.md
-          echo \`\`\` >> hash.md
+          echo "" >> $readme
+          echo \`\`\` >> $readme
           files_to_upload_str="${files_to_upload[@]}"
-          cat hash.md
+          cat $readme
           echo $files_to_upload_str
           # Gather explicit version number and number of commits
           # from .ci/setup-windows.sh
@@ -191,11 +192,7 @@ jobs:
           COMM_COUNT=$(git rev-list --count HEAD)
           COMM_HASH=$(git rev-parse --short=8 HEAD)
           AVVER="${COMM_TAG}-${COMM_COUNT}-${COMM_HASH}"
-          readme="hash.md"
-          echo \`\`\`shs256 > $readme
-          echo $(cat ${{ env.download_folder }}/hash.sha256) >> $readme
-          echo \`\`\` >> $readme
-          gh release create "$AVVER" artifact/*.* --target ${{ GITHUB.SHA }} -t "$AVVER" -F $readme
+          gh release create "$AVVER" $files_to_upload_str --target ${{ GITHUB.SHA }} -t "$AVVER" -F $readme
 
       # Make sure the release was created successfully first
       # before attempting to delete the files
