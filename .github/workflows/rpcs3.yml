@@ -158,5 +158,7 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: RPCS3 for Windows (MSVC) (7z)
-          path: build
+          path: |
+            build/${{ env.BUILD }}
+            build/${{ env.BUILD }}.sha256
           if-no-files-found: error
